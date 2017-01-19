@@ -13,16 +13,16 @@ var lines;
 var button = document.getElementById("submit");
 var star = 1;
 var character;
-var branch = [];
+var branch = [{lines:0, character:0}];
 
 //initialize a function to draw the tree
 function tree(branch) {
 	//determine the number of spaces for the first line
-	var numberSpaces = Math.floor(((branch[0] * 2) - 1) / 2);
+	var numberSpaces = Math.floor(((branch[0].lines * 2) - 1) / 2);
 	//initialize a loop
-	for (var i = 0; i < branch[0]; i++) {
+	for (var i = 0; i < branch[0].lines; i++) {
 		//log the concatenated string in the console
-		console.log(" ".repeat(numberSpaces) + branch[1].repeat(star));
+		console.log(" ".repeat(numberSpaces) + branch[0].character.repeat(star));
 		//reduce the number of spaces by one
 		numberSpaces--;
 		//increase the number of stars by 2
@@ -33,16 +33,14 @@ function tree(branch) {
 //initialize a function to evaluate the data
 function evaluateData() {
 	//grab the value in the first input field
-	lines = document.getElementById("height").value;
+	branch[0].lines = document.getElementById("height").value;
 	//grab the value in the second input field
-	character = document.getElementById("material").value;
+	branch[0].character = document.getElementById("material").value;
 	//check for valid fields
-	if (lines === "" || isNaN(lines) || character === "") {
+	if (branch[0].lines === "" || isNaN(branch[0].lines) || branch[0].character === "") {
 		alert("Both fields must have an appropriate value.")
 	} else 
 	//call the tree function
-	branch.push(lines);
-	branch.push(character);
 	tree(branch);
 }
 
