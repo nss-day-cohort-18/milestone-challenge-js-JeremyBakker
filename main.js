@@ -88,7 +88,7 @@ document.getElementById("submit").onclick = function submitText() {
 //establish a loop to iterate through both text fields. (I can't pull both values at the same time.)
 for (j = 0; j < 2; j++) {
 	//set an event listener for a key press on the text fields
-	document.getElementsByClassName("submitText")[j].onkeypress = function() {
+	document.getElementsByClassName("submitText")[j].onkeypress = function(event) {
     //listen for the ENTER key (keyCode=13) and call the evaluateData function if true
     if(event.keyCode == 13) {
 		evaluateData();
